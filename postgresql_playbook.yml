@@ -1,0 +1,5 @@
+---
+- name: create a psql db server
+  hosts: docker_containers
+  roles:
+  - dbservers

@@ -1,0 +1,20 @@
+---
+- hosts: locals
+  vars_files:
+    - ../secrets.yml
+  tasks:
+  - import_tasks: tasks/ensure_docker_py.yml
+  - name: login to docker registry
+    docker_login:
+      username: "{{ docker_hub_username }}"
+      password: "{{ docker_hub_password }}"
+      email: "{{ docker_hub_email }}"
+  - name: create custom docker container
+    docker_container:
+      name: apacheweb1
+      image: "{{ docker_hub_username }}/myapacheweb:v1"
+      state: started
+      exposed_ports:
+        - 80
+      ports:
+        "8080:80"

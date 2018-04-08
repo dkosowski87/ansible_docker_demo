@@ -1,0 +1,7 @@
+---
+- hosts: locals
+  vars_files:
+    - ../secrets.yml
+  tasks:
+    - name: run container
+      command: "docker run -d --name apacheweb1 -p 8080:80 {{ docker_hub_username }}/myapacheweb:v1"

@@ -1,0 +1,11 @@
+---
+- hosts: locals
+  vars_files:
+    - ../secrets.yml
+  tasks:
+  - import_tasks: tasks/ensure_docker_py.yml
+  - name: remove docker container
+    docker_container:
+      name: apacheweb1
+      image: "{{ docker_hub_username }}/myapacheweb:v1"
+      state: absent

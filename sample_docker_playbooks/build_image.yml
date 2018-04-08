@@ -1,0 +1,8 @@
+---
+- hosts: locals
+  tasks:
+  - import_tasks: tasks/ensure_docker_py.yml
+  - name: pull image
+    docker_image:
+      name: ubuntu
+      state: present

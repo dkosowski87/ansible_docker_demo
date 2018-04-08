@@ -1,0 +1,7 @@
+[locals]
+localhost ansible_connection=local
+
+[docker_containers]
+172.17.0.2 ansible_connection=docker ansible_host=test_host1
+172.17.0.3 ansible_connection=docker ansible_host=test_host2
+
